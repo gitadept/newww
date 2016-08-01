@@ -1,0 +1,240 @@
+.red
+  color npmred
+
+.subdued
+  opacity 0.6
+
+.full-width
+  width 100%
+
+.center, .centered
+  text-align center
+
+body
+  normal-font()
+  font-weight 400
+  font-size 16px
+  line-height 25px
+  letter-spacing -0.03em
+
+a
+  color npmred
+  text-decoration none
+  &:hover
+    text-decoration underline
+  &.unadorned
+    color text-color
+    font-weight 400
+
+  .sidebar &
+    color primary
+    @extend .red-on-hover
+    text-decoration none
+
+  .profile-sidebar-links &
+    color npmred
+
+h1
+  margin 0
+  padding 20px 0 0 0
+  font-weight 400
+  font-size 36px
+  line-height 1.2
+  letter-spacing -1.5px
+  color greigh1
+
+  .narrow &
+    margin 0.2em 0
+    text-align center
+    font-size 32px
+
+h2
+  margin 0
+  padding 20px 0 10px 0
+  font-weight 700
+  font-size 24px
+  color text-color
+  letter-spacing 0
+
+  &:before
+    font-size 45px
+    float left
+    margin-right 10px
+
+  &.ruled
+    letter-spacing -.8px
+    font-weight 400
+    border-bottom 2px solid greigh6
+    padding-bottom 22px
+    margin-bottom 20px
+    a
+      font-weight 600
+
+hgroup
+  margin 25px 0
+  h1,h2
+    margin 0
+    padding 0
+    text-align center
+    a
+      color primary
+      text-decoration none
+      &:hover
+        color primary-darker
+        text-decoration none
+
+  &.breadcrumb
+    *
+      text-align left
+    .description
+      font-size 100%
+      color greigh4
+      font-weight 400
+
+h2
+  font-size 135%
+  font-weight 400
+  line-height 1.2
+  a
+    font-weight 300
+
+
+h3
+  display block
+  margin 0
+  padding 20px 0 10px 0
+  font-size 20px
+  font-weight 400
+  line-height 1
+  color greigh2
+
+  .sidebar &
+    color npmred
+    a
+      color npmred
+
+
+h1, h2, h3
+  &.undecorated
+    a
+      color text-color
+
+.sidebar
+  h3, h3 a
+    color greigh2
+
+.featherweight-heading
+  font-weight 300
+  line-height 1.2
+  font-size 24px
+  margin 0 0 10px 0
+  padding 0
+  a
+    font-weight 300
+    color text-color
+    text-decoration underline
+    &:hover
+      color npmred
+h4
+  font-weight 300
+
+p
+  margin 0 0 15px 0
+
+  &.notice
+    line-height 1.5
+
+  &.whoa
+    background npmred
+    color white
+    border-color darken(npmred, 20%)
+    a
+      color white
+      text-decoration underline
+      &:hover
+        color white
+
+  &.list-of-links a
+    font-weight 400
+
+strong
+  &.code
+    code-font()
+
+blockquote
+  padding 0 15px
+  color #555
+  border-left 4px solid #CCC
+
+code
+  code-font()
+  background-color #F5F5F5
+
+pre
+  overflow-x auto
+  code
+    display inline-block
+    min-width 100%
+    margin 0 0 15px 0
+    padding 8px
+    border-radius 2px
+
+&.package-name
+  padding-bottom 0
+  padding-right 25px
+  a
+    color text-color
+    text-decoration none
+
+&.package-name-redundant
+  display none
+
+&.package-description-redundant
+  display none
+
+&.package-description
+  @extend .featherweight-heading
+
+.notice
+  margin-top 15px
+  margin-bottom 25px
+  padding 12px 10px
+  background greigh8
+  border 1px solid greigh6
+  border-radius 3px
+
+.visible
+  display block
+  visibility visable
+
+.hidden
+  display none
+
+.fake-strong
+  font-weight normal
+
+  &:before,
+  &:after
+    content "*"
+    display inline
+
+.description
+  color detail-grey
+  font-size .75em
+  margin 0
+
+  .included,
+  .additional
+    display block
+    margin-left 2.333333em
+    line-height 1.5
+
+.inactive
+  color #aaa
+
+pre.shell:before
+  content "$ "
+
+.osi
+  height 1em
+  vertical-align middle

@@ -1,0 +1,89 @@
+// Colors
+detail-grey = #979797
+
+// Dimensions
+
+packageWidgetHeadingHeight = 20px
+packageWidgetLogoHeight = 120px
+userAvatarSize = 50px
+starHeight = 18px
+maxColumnWidth = 1180px
+minColumnWidth = 900px
+narrowColumnWidth = 480px
+tablet-width = 640px
+mobileMaxWidth = 767px
+npmInstallHeight = 18px
+npmInstallFontSize = 15px
+sidebarMinWidth = 320px
+
+// Avatars
+
+avatarSizeInline = 20px
+avatarSizeCollaborators = 44px
+avatarSizeNav = 45px
+avatarSizeNavMobile = 25px
+
+// @extend Classes
+
+.no-float
+  float none
+  clear both
+  overflow hidden
+
+.vanilla-list
+  list-style none
+  margin 0
+  padding 0
+  li
+    list-style none
+
+.ellipsis
+  white-space nowrap
+  overflow-x hidden
+  text-overflow ellipsis
+
+.unstyled-text-input
+  border none
+  outline none
+  background none
+  margin 0
+  padding 0
+
+.red-on-hover
+  &:hover
+    color npmred
+
+.clear
+  zoom 1
+  &:after
+  &:before
+    content ""
+    display table
+  &:after
+    clear both
+
+// Mixins
+
+normal-font()
+  font-family 'Source Sans Pro', 'Lucida Grande', sans-serif
+
+code-font()
+  font-family Consolas, "Liberation Mono", Menlo, Monaco, Courier, monospace
+
+columns(n)
+  -webkit-columns n
+  -moz-columns n
+  columns n
+
+column-gap(n)
+  -webkit-column-gap n
+  -moz-column-gap n
+  column-gap n
+
+column-break-inside(n)
+  column-break-inside n
+  -webkit-column-break-inside n
+  -moz-column-break-inside n
+  // Firefox workaround
+  // http://stackoverflow.com/a/7785711
+  page-break-inside n

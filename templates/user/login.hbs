@@ -1,0 +1,30 @@
+<div class="container narrow">
+
+  <hgroup>
+    <h1>{{t "user.login.title"}}</h1>
+    <h2>{{t "user.login.subtitle"}}</h2>
+  </hgroup>
+
+  {{> errors}}
+
+  <form action='/login' method='post'>
+    <label for="name">{{t "user.login.form.username"}}</label>
+    <input type="text" id="name" name="name" required="required" tabindex=2 autocorrect="off" autocapitalize="off" autofocus/>
+
+    <label for="password">{{t "user.login.form.password"}}</label>
+    <input type="password" id="password" name="password" required="required" tabindex=3 />
+
+    <input type="submit" class="full-width" value="{{t "user.login.form.submit"}}" />
+
+    <input type="hidden" name="done" value="{{donePath}}">
+
+    <p class="center">
+      <a href="/forgot">{{t "user.login.form.forgot"}}</a> |
+      <a href="/signup">{{t "user.login.form.signup"}}</a>
+    </p>
+    {{> form_csrf}}
+  </form>
+
+  <div class="tip center"><strong>Tip: </strong>{{{tip}}}</div>
+
+</div>

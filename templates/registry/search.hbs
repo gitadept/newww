@@ -1,0 +1,58 @@
+<h2 class="centered ruled">
+  {{#if totalResults}}
+    {{totalResults}}
+  {{else}}
+    Sorry, no
+  {{/if}}
+  result{{#unless singleResult}}s{{/unless}}
+  for
+  <a href="/search?q={{q}}&page={{page}}">&lsquo;{{q}}&rsquo;</a>
+</h2>
+
+<div class="content-column">
+  <ul class="search-results">
+    {{#each results}}
+      {{#with fields}}
+        <li>
+          <div class="package-details">
+            <h3>
+              <a class="name" href="/package/{{name}}">{{name}}</a>
+              &nbsp;&nbsp;<a class="author" href="/~{{author}}">{{author}}</a>
+            </h3>
+
+
+            <p class="description">{{description}}</p>
+
+            <p class="stats">
+              {{!-- <span class="downloads"><i class="icon-download"></i>{{dlWeek}}</span> --}}
+              <span class="stars"><i class="icon-star"></i>{{stars}}</span>
+              &nbsp;&nbsp;<span class="version">v{{version}}</span>
+
+            </p>
+
+            {{#if keywords}}
+              <p class="keywords">
+                <i class="icon-tag"></i>
+                {{#each keywords}}
+                  {{#if @last}}
+                    {{this}}
+                  {{else}}
+                    {{this}},&nbsp;
+                  {{/if}}
+                {{/each}}
+              </p>
+            {{/if}}
+
+          </div>
+        </li>
+      {{/with}}
+    {{/each}}
+  </ul>
+  {{> pagination}}
+</div>
+
+{{#unless features.npmo}}
+  <div class="sidebar">
+    <div class="hiring-container" data-template="vanilla"></div>
+  </div>
+{{/unless}}

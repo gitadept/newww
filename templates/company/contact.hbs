@@ -1,0 +1,114 @@
+   <div class="content-column">
+
+    <div id="readme">
+    <hgroup>
+      <h1>Contact Us</h1>
+      <h2>We're building a bunch of awesome products. If you're interested in working with us, or have a burning feature request you want to talk about, then let us know.</h2>
+    </hgroup>
+
+    {{#if sent}}
+      <p>Thanks for reaching out! One of us will get back to you as soon as possible.</p>
+
+      {{#if mail}}{{mail}}{{/if}}
+
+    {{else}}
+      <form action="/send-contact" method="post">
+        <label for="name">Name</label>
+        <input type="text" required="required" id="name" name="name">
+
+        <label for="email">Email Address</label>
+        <input type="email" required="required" id="email" name="email" autocapitalize="off" autocorrect="off">
+
+        <label for="subject">Subject</label>
+        <input type="text" required="required" id="subject" name="subject">
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message"></textarea>
+
+        <div class="radio-group floaty">
+          <label for="inquire-general">
+            <input id="inquire-general" name="inquire" value="general" type="radio" checked> This is a general inquiry
+          </label>
+
+          <label for="inquire-support">
+            <input id="inquire-support" name="inquire" value="support" type="radio"> I need help with something
+          </label>
+
+          <label for="inquire-security">
+            <input id="inquire-security" name="inquire" value="security" type="radio"> I'm reporting a security issue
+          </label>
+        </div>
+
+        <input type="submit" class="full-width" value="Submit">
+        {{> form_security}}
+      </form>
+    {{/if}}
+
+  </div>
+
+</div>
+
+<div class="sidebar">
+
+  <h3>Ask for Help</h3>
+
+  <ul class="box">
+    <li>
+      <a href="mailto:support@npmjs.com">support@npmjs.com</a>
+    </li>
+    <li>
+      <a href="https://twitter.com/npm_support">@npm_support</a> on Twitter
+    </li>
+    <li>
+      <a href="https://github.com/npm/npm/issues">CLI issues</a> on GitHub
+    </li>
+    <li>
+      <a href="https://github.com/npm/newww/issues">website issues</a> on GitHub
+    </li>
+  </ul>
+
+  <h3>Say Hello</h3>
+
+  <ul class="box">
+    <li>
+      <a href="https://twitter.com/npmjs">@npmjs</a> on Twitter
+    </li>
+    <li>
+      <a href="irc://chat.freenode.net/npm">#npm</a> on freenode IRC
+    </li>
+  </ul>
+
+  <h3>Get a Job</h3>
+
+  <ul class="box">
+    <li>
+      We are hiring. Check out the <a href="/jobs">jobs page</a>
+    </li>
+  </ul>
+
+  <h3>Visit the Office</h3>
+
+  <ul class="box">
+    <li class="address">
+      <a href="https://goo.gl/maps/sbQUW">npm, Inc.</a><br/>
+      1999 Harrison Street<br/>
+      Suite 1150<br/>
+      Oakland, CA 94612<br/>
+    </li>
+  </ul>
+
+
+  <h3>Meet the Humans</h3>
+
+  <ul class="humans">
+    {{#each humans}}
+      <li>
+        <a href="/~{{username}}">
+          {{#if avatar}}<img src="{{avatar}}">{{/if}}
+          <span>{{username}}</span>
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+
+</div>

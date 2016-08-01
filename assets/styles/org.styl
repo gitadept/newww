@@ -1,0 +1,91 @@
+.billing-header
+  text-align left
+
+.org-info-header-container
+  display flex
+  flex-direction row
+  align-items center
+  margin 10px auto
+  h2
+    flex 0 80%
+    padding 0
+    margin 0
+  a
+    flex 0 20%
+.org-packages
+  .icon-lock
+    position relative
+    top 3px
+    color greigh3
+
+.package-header, .member-header
+  padding 5px
+  background greigh7
+
+.org-user-add
+  input[type=text],
+  input[type=radio],
+  fieldset,
+  label,
+  button
+    display inline-block
+
+  input[type=text]
+    margin auto
+    width 35%
+
+  fieldset
+    min-width 200px
+    margin auto 10px
+
+    legend
+      margin 0
+
+.name-desc
+  @extend .vanilla-list
+  @extend .ellipsis
+  float left
+  margin 10px
+  line-height 125% //not ideal
+  li
+    &:only-child
+      line-height 285% // also, not ideal
+  .display-name
+    color greigh4
+
+
+.submit-row
+  display flex
+  flex-direction row
+  justify-content space-between
+  width 50%
+  margin 0px auto
+  button
+    align-self center
+  a
+    align-self center
+
+/** js-enhanced styles */
+.team-selector-container,
+.add-member-btn,
+.add-package-btn,
+.members-to-add,
+.packages-to-add
+  display none
+
+.js
+  .team-selector-container,
+  .members-to-add,
+  .packages-to-add
+    display block
+
+  .add-member-btn,
+  .add-package-btn
+    display inline-block
+    vertical-align top
+
+  .inline-input
+    display inline-block
+    margin-right 13px
+    width 71%
+    height  47px

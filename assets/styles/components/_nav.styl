@@ -1,0 +1,260 @@
+
+.nav,
+.nav > li,
+.nav-breadcrumb-flow-indicator,
+.nav-breadcrumb-flow-indicator li
+  list-style none
+  margin 0
+  padding 0
+
+.nav-breadcrumb-flow-indicator-container
+  text-align center
+
+
+.nav-breadcrumb-flow-indicator
+  position relative
+  display inline-block
+  color table-border-grey
+  font-size .75em
+  font-weight bold
+  letter-spacing 0
+
+.nav-breadcrumb-flow-indicator:after
+  content "\0020"
+  border-top 2px solid #cfcfcf
+  display block
+  position absolute
+  top 1.15em
+  margin-left 10%
+  padding-right 80%
+
+.nav-breadcrumb-flow-indicator li
+  display inline-block
+  text-transform uppercase
+  width 32%
+
+.nav-breadcrumb-flow-indicator li
+  padding-left 3em
+
+.nav-breadcrumb-flow-indicator li:first-child
+  padding-left 0
+  float left
+
+.nav-breadcrumb-flow-indicator li:last-child
+  float right
+
+.nav-breadcrumb-flow-indicator li:before
+  content "\2022"
+  color #cfcfcf
+  font-size 2.8em
+  display block
+  z-index 5
+  position relative
+  margin 0 43%
+  background-color #fff
+
+.nav-breadcrumb-flow-indicator .done:before
+  color black
+
+.nav-breadcrumb-flow-indicator .current
+  color black
+
+.nav-breadcrumb-flow-indicator .current:before
+  color #cb3837
+
+@media (min-width 28.125em)
+  .nav-breadcrumb-flow-indicator li
+    width auto
+
+  .nav-breadcrumb-flow-indicator li
+    padding-left 4em
+
+
+@media (min-width 29.625em)
+  .nav-breadcrumb-flow-indicator li
+    padding-left 5em
+
+
+@media (min-width 31.125em)
+  .nav-breadcrumb-flow-indicator li
+    padding-left 6em
+
+@media (min-width 32.625em)
+  .nav-breadcrumb-flow-indicator li
+    padding-left 7em
+
+@media (min-width 34.125em)
+  .nav-breadcrumb-flow-indicator li
+    padding-left 8em
+
+@media (min-width 37.75em)
+  .nav-breadcrumb-flow-indicator li
+    padding-left 9em
+
+  .nav-container
+    border-bottom-width 1px
+    border-bottom-style solid
+    margin-left -40px
+    padding-left 40px
+    margin-right -40px
+    padding-right 40px
+
+  .nav-2-container
+    border-bottom-color black
+    border-top 1px solid table-border-grey
+
+  .nav-3-container
+    border-bottom-color table-border-grey
+
+  .nav-4-container
+    border-bottom-color #c6c6c6
+
+.nav > li
+  float: left
+  color table-border-grey
+  text-align center
+  position relative
+
+.nav-2 li
+  margin-left 50px
+  padding-top 20px
+  padding-bottom 20px
+
+  &:first-child
+    margin-left 0
+
+.nav-3 li
+  width 200px
+  height 2em
+  border-right-width 1px
+  border-right-style solid
+  -webkit-border-image -webkit-linear-gradient(bottom, table-border-grey 0%, rgba(0, 0, 0, 0) 66%) 1
+  -moz-border-image -moz-linear-gradient(bottom, table-border-grey 0%, rgba(0, 0, 0, 0) 66%) 1
+  -o-border-image -o-linear-gradient(bottom, table-border-grey 0%, rgba(0, 0, 0, 0) 66%) 1
+  border-image linear-gradient(to top, table-border-grey 0%, rgba(0, 0, 0, 0) 66%) 1
+  &:first-child
+    border-left-width 1px
+    border-left-style solid
+
+.nav-4 li
+  background #f8f8f8
+  width 150px
+  height 40px
+  padding .5em 0
+  margin-left 5px
+  border-top 1px solid #979797
+  border-left 1px solid #979797
+  border-right 1px solid #979797
+  border-top-left-radius 2px
+  border-top-right-radius 2px
+
+  &:first-child
+    margin-left 0
+
+.nav button,
+.nav a
+  color inherit
+  font inherit
+  -moz-appearance none
+  appearance none
+  background-color transparent
+  text-decoration none
+  cursor: pointer
+
+  &:hover
+    text-decoration none
+
+.nav button
+  border: 0px none
+
+.nav .current
+  color black
+  &:after
+    content "\0020"
+    position absolute
+    bottom 0
+    height 2px
+    width 100%
+    background-color npmred
+    display block
+
+.nav-4 .current
+  background transparent
+  border-top none
+  border-left-color greigh5
+  border-right-color greigh5
+
+  &:after
+    bottom auto
+    top 0
+    left -0.7px
+    width 101.1%
+    height 4px
+    border 1px solid npmred
+    border-top-left-radius 2px
+    border-top-right-radius 2px
+
+.action-nav
+  position relative
+  *, *:before, *:after
+    -webkit-box-sizing border-box
+    -moz-box-sizing border-box
+    box-sizing border-box
+    padding 0
+    margin 0
+  ul
+    list-style none
+    position relative
+    float right
+    display inline-table
+    li
+      float right
+      &:hover
+        background greigh7
+      &:hover > ul
+        display block
+    li
+      float left
+      a
+        display block
+        height 40px
+        width 40px
+        padding 4px
+        &:hover
+          text-decoration none
+
+     ul // flyout level
+       display none
+       position absolute
+       float right
+       width 220px
+       top 0
+       right 40px
+       border 1px solid greigh6
+       background white
+       box-shadow -3px 3px 10px -2px greigh6
+       li
+         float right
+         position relative
+         text-align right
+         right 0
+         a, button
+           display block
+           width 220px
+           height 40px
+           color primary
+           padding 8px 20px
+           border 0
+           border-bottom 1px solid greigh6
+           font-size 1em
+           apperance none
+           -moz-appearance none
+           -webkit-appearance none
+           background transparent
+           box-shadow none
+           cursor pointer
+           white-space nowrap
+
+           &:hover
+            background greigh7
+            text-decoration none

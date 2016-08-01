@@ -1,0 +1,483 @@
+section
+  display block
+  margin 50px 0
+
+.container
+  position relative
+  float none
+  clear both
+  overflow visible
+  max-width maxColumnWidth
+  margin 0 auto
+  padding 0 20px
+
+  &.static-content
+    margin-top 20px
+    margin-bottom 20px
+
+  &:after
+    content: ""
+    display table
+    clear both
+
+.main-contain
+  margin 0 auto
+
+.narrow
+  max-width narrowColumnWidth
+
+.tablet-width
+  max-width tablet-width
+
+.right-well-fixed
+  max-width 930px
+  margin 0 auto
+
+.content-column
+  position relative
+  float left
+  width 65%
+  margin-bottom 90px
+
+  .right-well-fixed &
+    width 460px
+
+    @media only screen and (max-width: 929px)
+      width 100%
+
+
+  @media only screen and (max-width: mobileMaxWidth)
+    float none
+    width 100%
+    margin-bottom 40px
+
+
+.sidebar
+  float right
+  margin-top 40px
+  width 30%
+
+  .right-well-fixed &
+    width 380px
+
+    @media only screen and (max-width: 929px)
+      width 100%
+
+  @media only screen and (max-width: mobileMaxWidth)
+    width 100%
+    float none
+    clear both
+    overflow hidden
+
+  .tonicdev
+    background: url('/static/images/tonicdev.ico') center left no-repeat
+    background-size: 25px 25px
+    padding-left: 30px
+
+  .promotion
+    margin-bottom 40px
+
+form.star
+  position absolute
+  top 29px
+  left -32px
+  display block
+  margin 10px 0
+  @media only screen and (max-width: maxColumnWidth)
+    left auto
+    top 28px
+    right 0px
+
+  input[type=checkbox]
+    display none
+
+    & + label
+      font-size 16px
+      line-height starHeight
+      vertical-align top
+      color text-color
+      cursor pointer
+      &:before
+        transition transform 0.5s
+        font-size starHeight
+        color greigh5
+        margin-right 5px
+
+    &:checked + label:before
+      color npmred
+      transform rotate(360deg)
+
+.package-name
+  i
+    position relative
+    left 0px
+    bottom 8px
+
+ul.columnar
+  @extend .vanilla-list
+  columns 3
+  column-gap 40px
+
+  li
+    column-break-inside avoid
+    padding 5px
+    padding-bottom 20px
+
+  @media only screen and (max-width: mobileMaxWidth)
+    columns 1
+
+.collaborated-packages
+  li
+    .icon-lock
+      position absolute
+      left -20px
+      color greigh3
+
+      @media only screen and (max-width: mobileMaxWidth)
+        left -14px
+
+.package-widget
+
+  &:hover
+    a
+      color npmred !important
+
+  h3, h3 a
+    font-size packageWidgetHeadingHeight
+    line-height packageWidgetHeadingHeight
+    overflow visible
+    vertical-align top
+    margin 0
+    padding 0
+    max-width 100%
+    @extend .ellipsis
+
+  a.name
+    @extend .red-on-hover
+    @extend .iconic
+    text-decoration none
+    color greigh2
+    &:before
+      @extend .iconic-before
+      content "\e618"
+      color greigh5
+      line-height packageWidgetHeadingHeight
+      padding-right 6px
+
+  p
+    font-size 15px
+    margin 0
+    max-width 100%
+    color greigh3
+    padding-left 23px
+    @extend .ellipsis
+
+  .quiet
+    font-size 14px
+    color greigh3
+    a
+      color greigh2
+      @extend .red-on-hover
+      font-weight 400
+
+.package-widget-with-logo
+  padding-left:60px;
+
+  .package-logo
+    margin-left:-60px;
+    margin-bottom:-50px;
+    width:50px;
+    height:50px;
+    position:relative;
+    display:block;
+    overflow:hidden;
+    vertical-align:middle;
+    text-align:center;
+
+    img
+      max-width: 50px;
+      max-height: 50px;
+
+  .package-details
+    a.name:before
+      display:none;
+    p
+      padding-left:0;
+
+.box
+  margin 0
+  font-size 16px
+  color greigh3
+
+  a:hover
+    color npmred !important
+
+  p
+    padding 14px
+    margin 0
+
+  a
+    text-decoration none
+    &:hover
+      text-decoration underline
+
+  li
+    line-height 2.5
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
+    padding-right 10px
+    border-bottom 1px solid greigh5
+    &:last-child
+      border-bottom none
+    &.address
+      line-height 1.5
+      padding-top 0.5em
+
+.pagination
+  margin 50px 0
+  width 100%
+  text-align center
+
+  a
+    display inline-block
+    border-radius 2px
+    border 1px solid greigh6
+    text-align center
+    margin 0 2px 10px
+    padding 1px 11px
+    color npmred
+    text-decoration none
+
+    &:hover, &.active
+      border-color darken(npmred, 20%)
+      color background-color
+      background npmred
+
+a.avatar
+  max-width 100%
+  display block
+  img
+    width 100%
+    border-radius 5px
+
+// Lists
+
+ol
+  list-style-position inside
+
+ul
+  margin 0 0 20px 20px
+  li
+    list-style disc
+
+ol, ul
+  &.bullet-free
+    @extend .vanilla-list
+    li
+      list-style none
+      padding 2px 0
+      a
+        font-weight 600
+
+ul.meta
+  @extend .vanilla-list
+  li
+    border-top 1px solid greigh5
+    line-height 2
+    &:first-child
+      border none
+
+li.last-publisher
+  img
+    width avatarSizeInline
+    height avatarSizeInline
+    border-radius 2px
+    margin-right 3px
+    vertical-align middle
+  a
+    height avatarSizeInline
+    vertical-align top
+
+ul.humans
+  list-style none
+  margin 0 0 10px 0
+  padding 0
+  float none
+  overflow hidden
+
+  li
+    float left
+    display block
+    margin 0
+    padding 0
+    position relative
+    height avatarSizeCollaborators
+    margin-right 10px
+    margin-bottom 10px
+
+  a
+    display block
+    position relative
+    text-decoration none
+
+  img, a.add
+    display inline-block
+    width avatarSizeCollaborators
+    height avatarSizeCollaborators
+    border-radius 3px
+    transition all 0.3s
+
+  a.add
+    text-align center
+    line-height avatarSizeCollaborators
+    vertical-align top
+    font-weight 700
+    font-size 32px
+    background greigh7
+    color greigh4
+    &:hover
+      background-color npmred
+      color white
+
+  span
+    padding-left 3px
+    display inline-block
+    line-height avatarSizeCollaborators
+    vertical-align top
+
+.ad
+  padding 10px
+  border 1px solid greigh7
+  border-radius 2px
+  background greigh8
+  a
+    font-weight 400
+    text-decoration underline
+    &.quiet
+      color greigh4
+      text-decoration none
+      @extend .red-on-hover
+  p
+    margin 0
+    padding 0
+
+  &.discreet
+    padding 0
+    border none
+    background none
+
+.hiring-widget
+  padding 20px 0
+
+.hiring-widget-logo
+  display block
+  text-align center
+  height 80px
+  margin-bottom 10px
+  img
+    display inline-block
+    max-width 100%
+    max-height 100%
+
+div.scroll-beyond-300
+  max-height 300px
+  overflow-y scroll
+  border 1px solid greigh6
+  margin 15px 0
+
+img.roomy-and-flexible
+  max-width 100%
+  margin 40px 0
+
+.img-container
+  img
+    max-width 100%
+
+.npm-install
+  position relative
+  margin-bottom 20px
+  &:before
+    position absolute
+    top 0
+    left 0
+    font-size npmInstallHeight
+    line-height npmInstallHeight
+    color greigh5
+    vertical-align top
+
+.autoselect-wrapper > input[type=text]
+    @extend .unstyled-text-input
+    code-font()
+    margin 0
+    padding 0 0 0 30px
+    line-height npmInstallHeight
+    vertical-align top
+    display inline-block
+    width 100%
+    white-space nowrap
+    overflow visible
+    overflow-x auto
+    color greigh3
+    height npmInstallHeight+2px
+    cursor text
+    font-size npmInstallFontSize
+
+.search-results
+  li
+    list-style none
+
+  h3
+    // padding-top 40px
+    padding-bottom 0
+
+  .name
+    font-weight bold
+    font-size 1.2em
+
+  .author
+    code-font()
+    font-size .9em
+    color greigh4
+    a
+      color greigh4
+      &:hover
+        color npmred
+
+  p
+    margin-bottom 0px
+
+  .package-details
+    position relative
+
+  .keywords, .stats
+    color greigh4
+    font-size 0.8em
+
+  .readme-context
+    background-color #f6f6f6
+    padding 5px
+    font-size 0.8em
+    color greigh3
+
+  i
+    position relative
+    font-size 0.9em
+    margin-right 4px
+    top 1px
+
+.hint-block
+  background-color #f9f9e5
+  padding 1em 0
+  margin-top 1em
+  text-align center
+
+/* Accessibility */
+
+.a11y-only
+  position absolute !important
+  height 1px
+  width 1px
+  overflow hidden
+  clip rect(1px 1px 1px 1px) /* IE6, IE7 */
+  clip rect(1px, 1px, 1px, 1px)

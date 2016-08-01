@@ -1,0 +1,36 @@
+<div class="container narrow">
+
+  <hgroup>
+    <h1>{{t "user.signup.title"}}</h1>
+    <h2>{{t "user.signup.subtitle"}}</h2>
+  </hgroup>
+
+  {{> errors}}
+
+  <form action="/signup" method="post">
+    <label for="name">{{t "user.signup.form.username"}}</label>
+    <input type="text" id="name" name="name" autocorrect="off" autocapitalize="off" value="{{userInput.name}}" />
+    <p class="help-text">{{t "user.signup.form.nameHelp"}}</p>
+
+    <label for="password">{{t "user.signup.form.password"}}</label>
+    <input type="password" id="password" name="password" />
+
+    <label for="verify">{{t "user.signup.form.verify"}}</label>
+    <input type="password" id="verify" name="verify" />
+
+    <label for="email">{{t "user.signup.form.email"}}</label>
+    <input type="text" id="email" name="email" autocorrect="off" autocapitalize="off" value="{{userInput.email}}" />
+    <p class="help-text">{{{t "user.signup.form.emailHelp"}}}</p>
+
+    <div class="radio-group">
+      <label for="npmweekly">
+        <input type="checkbox" id="npmweekly" name="npmweekly" checked="checked" autocorrect="off" autocapitalize="off" />
+        {{t "user.signup.form.npmWeekly"}}
+      </label>
+    </div>
+
+    <input type="submit" class="full-width" value="{{t "user.signup.form.submit"}}" />
+    {{> form_security}}
+  </form>
+
+</div>

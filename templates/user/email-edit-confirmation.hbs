@@ -1,0 +1,26 @@
+{{> profile-secondary-nav}}
+
+<div class="container narrow">
+
+  <h2>Email Address {{#if confirmed}}Confirmed{{else}}Reverted{{/if}}!</h2>
+
+  {{#if confirmed}}
+
+    <p>Your email address is now <code>{{user.email}}</code>.</p>
+
+  {{else}}
+
+    <p>You have successfully reverted the email address change attempt.</p>
+
+    <p>Your email address is (once again) <code>{{user.email}}</code>,
+      and the previous attempt to change it has been voided and completely
+      removed from the system.</p>
+
+    <p>If this happened without your knowledge or consent, then there's a
+      very good chance that your password is no longer secure.</p>
+
+    <p>Please <a href="/password">change your password now</a>.</p>
+
+  {{/if}}
+
+</div>

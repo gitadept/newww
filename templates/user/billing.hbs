@@ -1,0 +1,186 @@
+{{> profile-secondary-nav}}
+
+<div class="container">
+
+  <hgroup>
+    <h1>Subscriptions</h1>
+  </hgroup>
+
+  {{> email-verify-nag}}
+
+  {{#if canceled}}
+    <p class="notice cancellation-notice">
+      You have successfully cancelled your private npm subscription. Your free account
+      still exists, as do any private modules that you created. Your private modules
+      are still accessible to any other paid users you've shared them with. If you decide
+      to start paying again, those modules will be waiting for you.
+    </p>
+  {{/if}}
+
+  {{#if updated}}
+    {{> twitter-tracking pid='l5xyy'}}
+
+    <p class="notice update-notice">
+      You have successfully updated your billing information.
+      <br/><br/>
+      Please run `npm login` on the command line (even if you are already logged in) to get all the benefits of private npm!
+    </p>
+  {{else}}
+    {{> twitter-tracking pid='l5xz2'}}
+  {{/if}}
+
+  {{#if package}}
+    <p class="notice payment-required-notice">
+      Someone added you as a collaborator on the <a href="/package/{{package}}">{{package}}</a> package,
+      but you'll need to sign up as a paying user before you can access the package.
+    </p>
+  {{/if}}
+
+  {{#if customer.license_expired }}
+    <p class="error license-expired">
+      Your license has expired, and your account
+      status is <strong>{{customer.status}}</strong>.
+      Any private packages you've created still exist, but you
+      will not be able to access them until your license is renewed.
+    </p>
+  {{/if}}
+
+  <div class="tabs">
+    <div class="tab-nav-container">
+      <div class="nav-container nav-2-container">
+        <ul class="nav nav-2 clear" role="navigation">
+          <li class="current"><a href="#overview">Overview</a></li>
+          {{#if customer}}
+            <li><a href="#payment-information">Payment Information</a></li>
+          {{/if}}
+          {{#unless privateModules}}
+            <li><a href="/settings/billing/subscribe">Sign up for private modules</a></li>
+          {{/unless}}
+          {{#if customer.customer_id}}
+            <li><button type="button" id="billing" data-stripe-id="{{customer.customer_id}}">Payment History</button></li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+
+    <div id="overview" class="tab tab-1">
+      {{#if privateModules}}
+      <table class="subscriptions">
+        <thead>
+          <tr>
+            <th>Personal Plan</th>
+            <th>Next Billing Date</th>
+            <th>Monthly Fee</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each privateModules}}
+          <tr>
+            <td>Private Modules Plan <span>This plan is paid by you.</span></td>
+            {{#if cancel_at_period_end}}
+              <td>--</td>
+            {{else}}
+              <td data-date="{{next_billing_date}}" data-date-format="%B %e, %Y">
+                {{next_billing_date}}
+              </td>
+            {{/if}}
+            <td>{{cost}}</td>
+            {{#if cancel_at_period_end}}
+              <td data-date="{{next_billing_date}}" data-date-format="%B %e %Y">
+                Last date - {{next_billing_date}}
+              </td>
+            {{else}}
+              <td>
+                <a href="/org/{{npm_org}}/confirm-delete" class="icon-x delete-package"><span class="a11y-only">Delete Private Modules</span></a>
+              </td>
+            {{/if}}
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      {{/if}}
+
+      {{#if orgs}}
+      <table class="subscriptions">
+        <thead>
+          <tr>
+            <th>Organizations</th>
+            <th>Paid Users</th>
+            <th>Next Billing Date</th>
+            <th>Monthly Fee</th>
+            <th>cancellation date</th>
+            <th class="action">actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each orgs}}
+            <tr>
+              <td><a href="/org/{{npm_org}}">{{npm_org}}</href></td>
+              <td>{{quantity}}</td>
+              {{#if cancel_at_period_end}}
+                <td>--</td>
+              {{else}}
+                <td data-date="{{next_billing_date}}" data-date-format="%B %e %Y">
+                  {{next_billing_date}}
+                </td>
+              {{/if}}
+              <td>{{cost}}</td>
+              {{#if cancel_at_period_end}}
+                <td data-date="{{next_billing_date}}" data-date-format="%B %e %Y">
+                  Last date - {{next_billing_date}}
+                </td>
+              {{else}}
+                <td>--</td>
+              {{/if}}
+                <td>
+                {{#if cancel_at_period_end}}
+                  <form action="/org/{{npm_org}}" method="POST">
+                    <input type="hidden" name="updateType" value="restartOrg">
+                    {{#with ../../this}}
+                    {{> form_security}}
+                    {{/with}}
+                    <button type="submit" title="restart organization" class="icon-restart"><span class="a11y-only">restart payment for organization {{npm_org}}</span></button>
+                  </form>
+                {{else}}
+                  <a href="/org/{{npm_org}}/confirm-delete" title="delete organization" class="icon-x delete-package"><span class="a11y-only">Delete Org {{npm_org}}</span></a>
+                {{/if}}
+                </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      {{else}}
+        <p>You do not have any subscriptions</p>
+      {{/if}}
+    </div><!--/.tab-1-->
+
+    <div id="payment-information" class="tab tab-2">
+      {{#if customer}}
+
+        {{> payment-info-on-file}}
+
+        <p>
+          You can also <a href="#" id="cancel-subscription-toggler">stop paying us</a> entirely and cancel all your subscriptions.
+        </p>
+
+      {{/if}}
+
+      {{> errors}}
+
+      {{#if customer}}
+
+        {{> update-billing-info}}
+
+        {{> cancel-all-subscriptions}}
+
+      {{/if}}
+
+    </div><!--/.tab-2-->
+
+  </div><!--/.tabs-->
+
+</div>
+
+<script src="https://js.stripe.com/v2/"></script>
+<script src="https://static.accountdock.com/app.min.js"></script>

@@ -1,0 +1,44 @@
+<div class="package-widget {{#if logo}}package-widget-with-logo{{/if}}">
+
+  {{#if logo}}
+    <a class="package-logo" href="/package/{{name}}">
+      <img src="{{logo}}" alt="{{name}} logo">
+    </a>
+  {{/if}}
+
+  <div class="package-details">
+    <h3>
+      <a class="name" href="/package/{{name}}">{{name}}</a>
+    </h3>
+
+    <p class="description">{{description}}</p>
+
+    {{#if version}}
+    <p class="author quiet">
+
+      {{#unless lastPublishedAt}} {{#unless publisher}}
+        version
+      {{/unless}} {{/unless}}
+
+      <a class="version" href="/package/{{name}}">{{version}}</a>
+
+      {{#if lastPublishedAt}} {{#if publisher}}
+        published
+        <span data-date="{{lastPublishedAt}}" data-date-format="relative">{{lastPublishedAt}}</span>
+        by
+        {{#if npmo}}
+          {{publisher.name}}
+        {{else}}
+          <a href="/~{{publisher.name}}">{{publisher.name}}</a>
+        {{/if}}
+      {{/if}} {{/if}}
+
+    </p>
+    {{/if}}
+
+    {{#if dlWeek}}
+      <p class="quiet">{{pluralize dlWeek "download" true}} in the last week</p>
+    {{/if}}
+  </div>
+
+</div>

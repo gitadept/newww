@@ -1,0 +1,60 @@
+{{> profile-secondary-nav}}
+
+<div class="container narrow">
+
+  <hgroup>
+    <h1>edit email address</h1>
+  </hgroup>
+
+  {{#unless submitted}}
+
+    <form data-tab="edit-email" method="post" action="/email-edit">
+
+      <p>
+        An email will be sent to the new address to confirm.
+        Another email will also be sent to the old
+        <a href="mailto:{{user.email}}">{{user.email}}</a> address
+        to verify that this is intentional.
+      </p>
+
+      <input type="hidden" name="_id" value="{{profile._id}}">
+      <input type="hidden" name="name" value="{{profile.name}}">
+
+      <label for="password">password</label>
+      <input type="password" id="password" name="password">
+
+      {{#if error.password}}
+        <p class="error">Invalid password</p>
+      {{/if}}
+
+      <label for="email">new email address</label>
+      <input type="text" id="email" name="email" autocapitalize="off" autocorrect="off">
+
+      <p class="help-text">this <strong>will be</strong> public</p>
+
+      {{#if error.email}}
+        <p class="error">Must provide a valid email address</p>
+      {{/if}}
+
+      <input type="submit" value="send email confirmation" class="full-width" />
+      {{> form_security}}
+    </form>
+
+  {{else}}
+
+      <h2>Email Address Change Submitted!</h2>
+
+      <p>An email confirmation has just been sent to you with a link that
+        you must click to complete the process.</p>
+
+      <p>If you have any problems, please contact
+        <a href="mailto:support@npmjs.com">the website admins</a>
+        and we'll do our best to get you sorted out.</p>
+
+      {{!-- only for dev; this should *never* show up in prod! --}}
+      {{#if confirm}}{{confirm}}{{/if}}
+      {{#if revert}}{{revert}}{{/if}}
+
+  {{/unless}}
+
+</div>

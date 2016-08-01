@@ -1,0 +1,134 @@
+{{#with profile}}
+
+<div class="content-column">
+
+  <h1>{{name}}</h1>
+  {{#if orgs}}
+    <h2 class="undecorated">
+      <a id="orgs" href="#orgs">
+        {{pluralize orgs.count "Organizations" true}}
+      </a>
+    </h2>
+    <ul class="bullet-free organizations">
+      {{#each orgs.items}}
+        <li>
+          <a href="/org/{{name}}">@{{truncate name 50}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+
+  {{#if packages}}
+    <h2 class="undecorated">
+      <a id="packages" href="#packages">
+        {{pluralize packages.count "Packages" true}} by {{name}}
+      </a>
+    </h2>
+    <ul class="bullet-free collaborated-packages">
+      {{#each packages.items}}
+        <li>
+          {{#if isPrivate}}<i class="icon-lock"></i>{{/if}}
+          <a href="/package/{{name}}">{{truncate name 50}}</a>
+          {{#if version}}- <strong>v{{version}}</strong>{{/if}}
+          {{#if description}}- {{description}}{{/if}}
+        </li>
+      {{/each}}
+      {{#if packages.hasMore}}
+        <a href="#" class="button fetch-more-packages">view more packages</a>
+      {{/if}}
+    </ul>
+  {{/if}}
+
+  {{#if stars}}
+    <h2 class="undecorated">
+      <a id="starred" href="#starred">
+        {{pluralize stars.length "Packages" true}} starred by {{name}}
+      </a>
+    </h2>
+    <ul class="bullet-free starred-packages">
+      {{#each stars}}
+        <li>
+          <a href="/package/{{this}}">{{truncate this 50}}</a> {{description}}
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+</div>
+
+<div class="sidebar">
+
+  {{#if isSelf}}
+    <a href="http://en.gravatar.com/emails/" class="avatar">
+      <img src="{{#if avatar.large}}{{avatar.large}}{{else}}{{avatar.medium}}{{/if}}">
+    </a>
+  {{else}}
+    <a href="/~{{name}}" class="avatar">
+      <img src="{{#if avatar.large}}{{avatar.large}}{{else}}{{avatar.medium}}{{/if}}">
+    </a>
+  {{/if}}
+
+  {{#if isSelf}}
+    <h2>Your Account</h2>
+
+    <ul class="vanilla-list profile-edit-links profile-sidebar-links">
+      {{#if isPaid}}
+        <li><a href="/settings/billing">manage billing</a></li>
+      {{else}}
+      <li><a href="/settings/billing/subscribe">sign up for private modules</a></li>
+      {{/if}}
+      <li><a href="/org/create">create an organization</a></li>
+      <li><a href="/profile-edit">update your profile</a></li>
+    </ul>
+
+    {{> email-verify-nag}}
+  {{/if}}
+
+  {{#if resource.fullname}}
+    <h2 class="fullname">{{resource.fullname}}</h2>
+  {{/if}}
+
+  <ul class="vanilla-list profile-sidebar-links">
+
+    {{#if emailObfuscated}}
+      <li class="email">
+        <a href="#" data-email={{emailObfuscated}}>obfuscated</a>
+      </li>
+    {{/if}}
+
+    {{#with resource}}
+
+      {{#if homepage}}
+        <li class="homepage">
+          <a href="{{homepage}}">{{schemeless homepage}}</a>
+        </li>
+      {{/if}}
+
+      {{#if github}}
+        <li class="github">
+          <a href="https://github.com/{{github}}">@{{github}}</a> on GitHub
+        </li>
+      {{/if}}
+
+      {{#if twitter}}
+        <li class="twitter">
+          <a href="https://twitter.com/{{twitter}}">@{{twitter}}</a> on Twitter
+        </li>
+      {{/if}}
+
+      {{#if freenode}}
+        <li class="freenode">
+          <a href="irc://chat.freenode.net/npm">{{freenode}}</a> on freenode
+        </li>
+      {{/if}}
+
+    {{/with}}
+
+    <li class="npm">
+      <a href="/~{{name}}">@{{name}}</a> on npm
+    </li>
+
+  </ul>
+
+</div>
+
+{{/with}}

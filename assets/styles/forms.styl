@@ -1,0 +1,503 @@
+.alert
+  background yellow
+  color yellow-dark
+
+.error
+  background primary-lightest
+  color primary-darkest
+
+.info
+  background secondary-lightest
+  color secondary-darkest
+
+.success
+  background green
+  color green-dark
+
+label
+  display block
+  margin 0 0 3px
+  padding-left 5px
+  color greigh2
+  font-weight 600
+
+  &.checkbox
+    color npmred
+    font-size 14px
+
+  input[type=radio] + &
+    display inline-block
+    vertical-align middle
+
+textarea
+  normal-font()
+  font-size 16px
+  border 1px solid greigh5
+  margin 0 0
+  // padding 3%
+  width 100%
+  min-height 300px
+  border-radius 4px
+  background-color background-color
+  color text-color
+  outline 0
+  resize none
+
+input[type=text],
+input[type=search],
+input[type=email],
+input[type=password]
+  -webkit-appearance none
+  normal-font()
+  font-size 16px
+  display block
+  width 100%
+  height 38px
+  // padding-left 2%
+  // padding-right 2%
+  border 1px solid greigh5
+  margin 0 0 20px
+  border-radius 4px
+  background-color background-color
+  color text-color
+  outline 0
+
+input[type=text],
+input[type=search],
+input[type=email],
+input[type=password],
+textarea
+  padding 5px
+
+input[type=checkbox]
+  margin 0 6px 0 0
+
+select
+  display block
+  width 96%
+  margin 0 0 20px
+  outline 0
+
+input[type=submit], .button
+  normal-font()
+  border 0
+  border-radius 4px
+  text-align center
+  display block
+  padding 0 35px
+  margin 0 0 4px
+  height 47px
+  line-height 47px
+  color background-color
+  font-size 18px
+  background npmred
+  cursor pointer
+  text-decoration none !important
+  -webkit-appearance none
+  clear both
+
+  &:hover
+    background greigh2
+
+  &[disabled]
+    background greigh5
+
+input[type="submit"].btn-secondary,
+button[type="submit"].btn-secondary,
+.button.btn-secondary,
+.btn-secondary
+  color npmred
+  border 1px solid npmred
+  background background-color
+  font-size 1em
+
+  &:hover
+    background greigh2
+    color background-color
+
+  &[disabled]
+    background greigh5
+    color background-color
+
+.btn-inline
+  display inline-block
+
+.btn-link
+  appearance none
+  -webkit-appearance none
+  -moz-appearance none
+  border none
+  box-shadow none
+  height auto
+  width auto
+  display inline
+  background transparent
+  color npmred
+  font inherit
+  cursor pointer
+  &:hover
+    text-decoration underline
+
+.link-btn
+  padding 5px 20px
+  border-radius 3px
+  &:hover
+    text-decoration none
+    background transparent(white,25%)
+
+.delete-user, .delete-package
+  color white
+  background greigh2
+  border medium none
+  box-shadow none
+  appearance none
+  -moz-appearance none
+  -webkit-appearance none
+  border-radius 100%
+  width 25px
+  height 25px
+  cursor pointer
+  display inline-block
+  font-size 11px
+  line-height 1.2
+  padding 6px
+  text-align center
+  &:hover
+    text-decoration none
+
+form[class^="remove-"]
+  input[type=submit]
+    margin 0
+    padding 0
+    border none
+    outline none
+    -webkit-appearance none
+    display block
+    width 30px
+    height 100%
+    line-height 100%
+    border none
+    background transparent
+    transition all 0.2s
+    color greigh5
+    &:hover
+      color npmred
+
+input[type=file]
+  margin 0 0 50px
+
+.help-text
+  font-size 14px
+  color text-color-subdued
+  line-height 18px
+  margin -15px 0 22px
+  padding-left 8px
+  &.example
+    &:before
+      content "Example: "
+
+form p
+  margin 25px 0 0
+
+  &.help-text
+    margin -15px 0 22px
+    text-align left
+
+  a
+    text-decoration none
+
+    &:hover
+      color greigh2
+
+.radio-group
+  margin 25px 0
+
+  &.floaty
+    @extend .no-float
+    input
+      vertical-align text-bottom
+    label
+      display block
+      float left
+      margin-right 50px
+      font-weight 400
+      height 30px
+      line-height 30px
+
+changeAvatarSize = 40px
+p.change-avatar
+  display block
+  margin 40px 0
+  padding 0
+  line-height changeAvatarSize
+  vertical-align top
+  a, span
+    vertical-align top
+  img
+    width changeAvatarSize
+    height changeAvatarSize
+    margin-right 10px
+    border-radius 3px
+
+toggleWidth = 140px
+toggleHeight = 32px
+togglePadding = 4px
+
+input.toggle
+  margin 20px 0
+  display none
+  + label
+    transition all 0.2s
+    display inline-block
+    width toggleWidth
+    height toggleHeight + (togglePadding*2)
+    border-radius (toggleHeight/2) + togglePadding
+    background greigh3
+    margin 0
+    padding togglePadding
+    cursor pointer
+    overflow hidden
+    position relative
+    &:before, &:after
+      transition all 0.2s
+      display block
+      position absolute
+      top 0px
+      line-height (toggleHeight + (togglePadding*2))
+      text-align center
+      text-transform uppercase
+      font-size 20px
+      font-weight 700
+      width (toggleWidth - toggleHeight)
+    &:before
+      left -(toggleWidth)
+      color white
+      content "private"
+    &:after
+      left toggleHeight
+      color white
+      content "public"
+    span
+      transition all 0.2s
+      display block
+      position absolute
+      width toggleHeight
+      height toggleHeight
+      border-radius (toggleHeight/2)
+      top togglePadding
+      left togglePadding
+      background white
+      content " "
+
+  &:checked + label
+    background npmred
+    &:before
+      left 0
+    &:after
+      left toggleWidth
+    span
+      left (toggleWidth - toggleHeight - togglePadding)
+
+  + label
+    margin 25px 0
+
+label.wrapping-hidden-radio
+  display inline-block
+
+  input[type=radio]
+    display none
+
+    &:checked + span, &:enabled span:hover
+      background greigh4
+      color white
+      opacity 1
+
+    &:disabled + span
+      cursor not-allowed
+      opacity 0
+
+  span
+    cursor pointer
+    transition all 0.2s
+    color greigh4
+    font-weight normal
+    border-radius 3px
+    padding 1px 8px 3px 8px
+
+fieldset
+  legend
+    font-weight 600
+    margin-bottom 1em
+  ul,
+  ul li
+    list-style none
+    margin 0
+
+.inline-input-set
+  > div
+    display inline-block
+
+    &:first-child
+      margin-right 20px
+
+  .large
+    width 300px
+
+  .small
+    width 62px
+
+input[type=text] + .description
+  margin-top -1.5em
+
+/**
+ * Switch-style checkboxes.
+ * Inspired by Lea Verou
+ */
+
+
+.switch-container
+  margin-top 20px
+
+.switch-container input[type="checkbox"]:not(:checked),
+.switch-container input[type="checkbox"]:checked  /* :checked here acting as a filter for older browsers */
+  position absolute
+  opacity 0
+
+.switch-container label
+  position relative
+  display inline-block
+  margin 0 1em 1em 0
+  width 12em
+
+.switch-container.pay-status label
+  width 9em
+
+.edit-write-permissions-save //kill this Roq!
+  display none
+
+input[type="checkbox"].switch + div
+  width 2.25em
+  height 1.08875em
+  border 2px solid greigh4
+  border-radius 999px
+  margin -2px auto
+  background #fff
+  background-origin border-box
+  background-clip border-box
+  overflow hidden
+  transition-duration .4s
+  transition-property padding
+  padding 0em .2em
+  cursor pointer
+
+
+input[type="checkbox"].switch:checked + div
+  padding-left 1.2em
+
+
+input[type="checkbox"].switch + div:before
+  content ''
+  display block
+  width .7em
+  height .7em
+  margin 1px 0
+  border-radius inherit
+  background text-color
+
+
+input[type="checkbox"].switch:checked + div:before
+  background npmred
+
+input[type="checkbox"].inactive.switch + div:before,
+input[type="checkbox"][disabled].switch + div:before
+  background-color #aaa
+
+input[type="checkbox"].switch:active + div:before
+  background-color #aaa
+
+.switch-label
+  margin-top -1.25em
+  &.unchecked-text
+    float left
+  &.checked-text
+    float right
+
+.checked-text
+  font-weight normal
+
+input[type="checkbox"].switch:checked ~ .unchecked-text
+  font-weight normal
+input[type="checkbox"].switch:checked ~ .checked-text
+  font-weight bold
+
+.js
+  .edit-pay-status-save,
+  .edit-write-permissions-save
+    display none
+
+.custom-select-label + .dropdown
+  position relative
+  display:block
+  margin-top:0.5em
+  overflow:hidden
+  width:100%
+  max-width:100%
+
+
+select.custom
+  width 110%
+  max-width 110%
+  min-width 110%
+  appearance none
+  -webkit-appearance none
+  -moz-appearance window
+  text-indent 0.01px
+  text-overflow ""
+  font-size 16px
+  font-weight bold
+  background none
+  border none
+  color #444
+  outline none
+  padding .5em 19% .4em .8em
+  font-family helvetica, sans-serif
+  line-height 1.2
+  margin .2em
+
+
+select.custom::-ms-expand
+  display none
+
+
+.custom-select-label + .dropdown:after
+  background transparent none repeat scroll 0% 0%
+  content "\25BC"
+  font-size 14px
+  padding 0px
+  position absolute
+  right 1em
+  top 0.7em
+  bottom 0.3em
+  z-index 1
+  color black
+  pointer-events none
+
+
+.custom-select-label + .dropdown:hover
+  border 1px solid #888
+
+
+select.custom:focus
+  outline none
+  box-shadow 0 0 3px 3px rgba(180,222,250, .85)
+
+
+select.custom:-moz-focusring
+  color transparent
+  text-shadow 0 0 0 #000
+
+
+.custom-select-label + .dropdown
+  border 1px solid #BBB
+  border-radius 0.2em
+  background transparent

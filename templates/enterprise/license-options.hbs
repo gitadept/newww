@@ -1,0 +1,36 @@
+<div class="container tablet-width">
+
+  <hgroup>
+    <h1>npm On-Site</h1>
+    <h2>Licensing options</h2>
+  </hgroup>
+
+  <section>
+    <h2>Multi-seat license: $20/seat/month</h2>
+
+    <p>You can always increase or decrease your number of seats later.
+    If you need more than 100 seats, please email <a href="mailto:sales@npmjs.com">sales@npmjs.com</a></p>
+
+    <form>
+      <input type="hidden" data-stripe-key="{{stripeKey}}">
+      <input type="hidden" id="billing-email" value="{{billingEmail}}">
+      <input type="hidden" id="customer-id" value="{{customerId}}">
+      <p>Number of seats:
+        <select name="multi-seat-count" id="multi-seat-count">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="60">60</option>
+          <option value="80">80</option>
+          <option value="100">100</option>
+        </select>
+      </p>
+      <input type="submit" class="full-width" value="Buy multi-seat license" id="buy-multi-seat">
+      {{> form_security}}
+    </form>
+  </section>
+
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+
+</div>
